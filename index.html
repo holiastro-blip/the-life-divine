@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Life Divine — Sri Aurobindo · Digital Companion &amp; Audiobook</title>
+  
+  <!-- Editorial Typography: Cinzel for monumental titles, Cormorant Garamond for literary prose, Noto Sans Kannada for Indic text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-black">
+
+  <!-- =========================================================================
+       EDITORIAL MASTHEAD (Quiet, Archival, Restrained)
+       ========================================================================= -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      
+      <!-- Brand Emblem -->
+      <div class="brand" onclick="app.showHome()" title="Return to Overview">
+        <span class="brand-eyebrow">SRI AUROBINDO</span>
+        <span class="brand-work">THE LIFE DIVINE</span>
+      </div>
+
+      <!-- Experience Mode Switcher (Quiet Tabs with Refined SVG Icons) -->
+      <nav class="experience-nav" aria-label="Reading and Listening Modes">
+        <button id="btn-mode-home" class="nav-tab active" onclick="app.showHome()">
+          <span class="tab-dot"></span>
+          <span>Overview</span>
+        </button>
+        <button id="btn-mode-listen" class="nav-tab" onclick="app.showAudioView()">
+          <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+            <line x1="4" y1="12" x2="4" y2="12.01"></line>
+            <line x1="8" y1="8" x2="8" y2="16"></line>
+            <line x1="12" y1="4" x2="12" y2="20"></line>
+            <line x1="16" y1="7" x2="16" y2="17"></line>
+            <line x1="20" y1="11" x2="20" y2="13"></line>
+          </svg>
+          <span>Listen</span>
+        </button>
+        <button id="btn-mode-read" class="nav-tab" onclick="app.showReadView()">
+          <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span>Read</span>
+        </button>
+      </nav>
+
+      <!-- Archival Publications & Downloads -->
+      <div class="masthead-actions">
+        <a href="assets/The_Life_Divine_Bilingual_Companion.pdf" download class="archival-link" title="Download the 333-page bilingual printed companion">
+          <span>PDF (333p)</span>
+        </a>
+        <a href="assets/The_Life_Divine_Bilingual_Companion.epub" download class="archival-link" title="Download EPUB 3 edition for e-readers">
+          <span>EPUB</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       1. HERO & LANDING SANCTUARY (Forest & Parchment Art Direction)
+       ========================================================================= -->
+  <main id="view-home" class="page-view active">
+    
+    <!-- Hero Canvas with Atmospheric Archival Sri Aurobindo Portrait -->
+    <section class="hero-canvas">
+      <div class="hero-overlay"></div>
+      
+      <div class="hero-container">
+        
+        <!-- Left: Monumental Editorial Content -->
+        <div class="hero-editorial">
+          
+          <div class="kicker-row">
+            <span class="archival-tag">INTEGRAL ADVAITA</span>
+            <span class="kicker-rule"></span>
+            <span class="date-tag">1914 – 1950</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="ht-sub">SRI AUROBINDO</span>
+            <span class="ht-main">THE LIFE DIVINE</span>
+          </h1>
+
+          <div class="hero-title-kannada" lang="kn">
+            ದಿ ಲೈಫ್ ಡಿವೈನ್ · ದಿವ್ಯ ಜೀವನ ದರ್ಶನ
+          </div>
+
+          <p class="hero-exposition">
+            A comprehensive chapter-by-chapter synthesis of Sri Aurobindo’s philosophical masterwork. Harmonizing the ancient Vedantic affirmation of the Omnipresent Reality with the evolutionary emergence of Matter, Life, Mind, and the Supramental Truth-Consciousness.
+          </p>
+
+          <div class="curator-byline">
+            <span class="curator-lbl">Original Work:</span>
+            <span class="curator-name">Sri Aurobindo</span>
+            <span class="curator-sep">·</span>
+            <span class="curator-lbl">Bilingual Synthesis:</span>
+            <span class="curator-name">Ramesh Sargur</span>
+          </div>
+
+          <!-- The Two Architectural Gateways: Open Reader & Listen to Audiobook -->
+          <div class="hero-gateways">
+            
+            <!-- Gateway 1: Open Reader (Solid Forest Green #182C27 with Warm Ivory #F0EBDD Typography) -->
+            <button class="gateway-btn gateway-read" onclick="app.showReadView()">
+              <div class="gw-text-group">
+                <span class="gw-super">BILINGUAL COMPANION</span>
+                <span class="gw-main">Open Digital Reader</span>
+                <span class="gw-desc">Read all 56 chapters in parallel English and Kannada</span>
+              </div>
+              <span class="gw-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <!-- Gateway 2: Listen to Audiobook (Parchment #F0EBDD with Forest Green #182C27 Border & Typography) -->
+            <button class="gateway-btn gateway-listen" onclick="app.showAudioView()">
+              <div class="gw-text-group">
+                <span class="gw-super">COMPLETE AUDIOBOOK</span>
+                <span class="gw-main">Listen to Audiobook</span>
+                <span class="gw-desc">56 chapters in measured English by Christopher</span>
+              </div>
+              <span class="gw-indicator" aria-hidden="true">
+                <svg class="gw-wave-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="4" y1="12" x2="4" y2="12.01"></line>
+                  <line x1="8" y1="8" x2="8" y2="16"></line>
+                  <line x1="12" y1="4" x2="12" y2="20"></line>
+                  <line x1="16" y1="7" x2="16" y2="17"></line>
+                  <line x1="20" y1="11" x2="20" y2="13"></line>
+                </svg>
+              </span>
+            </button>
+
+          </div>
+
+          <!-- Hero Archival Badges -->
+          <div class="hero-specs-row">
+            <span class="spec-item"><span class="spec-num">56</span> Chapters</span>
+            <span class="spec-dot">·</span>
+            <span class="spec-item"><span class="spec-num">333</span> Page Printed Volume</span>
+            <span class="spec-dot">·</span>
+            <span class="spec-item"><span class="spec-num">Studio</span> Neural Audio</span>
+            <span class="spec-dot">·</span>
+            <span class="spec-item"><span class="spec-num">English</span> &amp; Kannada</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Subtle scroll cue -->
+      <div class="scroll-cue" onclick="document.getElementById('architectural-overview').scrollIntoView({ behavior: 'smooth' })">
+        <span class="cue-label">STRUCTURAL COMPOSITION</span>
+        <span class="cue-line"></span>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURAL THREE PILLARS OVERVIEW -->
+    <section id="architectural-overview" class="overview-section">
+      <div class="overview-inner">
+        
+        <div class="section-lead">
+          <span class="lead-eyebrow">ARCHITECTURAL DESIGN</span>
+          <h2 class="lead-title">The Three Movements of Existence</h2>
+          <div class="lead-rule"></div>
+        </div>
+
+        <div class="pillars-grid">
+          
+          <div class="pillar-column">
+            <div class="pillar-epoch">BOOK I · CHAPTERS I–XXVIII</div>
+            <h3 class="pillar-name">Omnipresent Reality and the Universe</h3>
+            <div class="pillar-kn" lang="kn">ಪುಸ್ತಕ ಒಂದು — ಸರ್ವವ್ಯಾಪಿ ಸತ್ಯ ಮತ್ತು ವಿಶ್ವ</div>
+            <p class="pillar-text">
+              Harmonizes the Materialist Negation and the Refusal of the Ascetic. Unfolds the sevenfold chord of Being, Sachchidananda, and the creative intermediary of the Supramental Truth-Consciousness.
+            </p>
+            <div class="pillar-foot">
+              <span class="pillar-badge">28 Chapters</span>
+              <button class="pillar-action-btn" onclick="app.showAudioView(0)">
+                <span>Listen to Ch. I</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="pillar-column">
+            <div class="pillar-epoch">BOOK II · PART I · CHAPTERS I–XIV</div>
+            <h3 class="pillar-name">The Infinite Consciousness and the Ignorance</h3>
+            <div class="pillar-kn" lang="kn">ಪುಸ್ತಕ ಎರಡು · ಭಾಗ ೧ — ಅನಂತ ಪ್ರಜ್ಞೆ ಮತ್ತು ಅಜ್ಞಾನ</div>
+            <p class="pillar-text">
+              Examines how Cosmic Ignorance, Ego, Maya, and the dualities of Error and Evil arise not as separate powers, but as purposeful, self-limiting veilings of the Divine Conscious-Force.
+            </p>
+            <div class="pillar-foot">
+              <span class="pillar-badge">14 Chapters</span>
+              <button class="pillar-action-btn" onclick="app.showAudioView(28)">
+                <span>Listen to Ch. XXIX</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="pillar-column">
+            <div class="pillar-epoch">BOOK II · PART II · CHAPTERS XV–XXVIII</div>
+            <h3 class="pillar-name">The Knowledge and the Spiritual Evolution</h3>
+            <div class="pillar-kn" lang="kn">ಪುಸ್ತಕ ಎರಡು · ಭಾಗ ೨ — ಜ್ಞಾನ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ವಿಕಾಸ</div>
+            <p class="pillar-text">
+              Maps the ascent out of the Sevenfold Ignorance, the philosophy of Rebirth and Karma, the Triple Transformation (Psychic, Spiritual, Supramental), the Gnostic Being, and the Divine Life upon earth.
+            </p>
+            <div class="pillar-foot">
+              <span class="pillar-badge">14 Chapters</span>
+              <button class="pillar-action-btn" onclick="app.showAudioView(42)">
+                <span>Listen to Ch. XLIII</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Archival Colophon Card -->
+        <div class="colophon-card">
+          <div class="colophon-header">
+            <span class="colophon-tag">ARCHIVAL EDITION</span>
+            <h3 class="colophon-title">The Complete Bilingual Publication</h3>
+          </div>
+          <p class="colophon-text">
+            Prepared as an enduring digital publication and audio repository. Each chapter includes the synthesized English philosophical exposition, parallel Kannada translation by Ramesh Sargur, and dedicated Christopher studio narration.
+          </p>
+          <div class="colophon-actions">
+            <a href="assets/The_Life_Divine_Bilingual_Companion.pdf" download class="btn-colophon btn-colophon-solid">
+              <svg class="colophon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download Complete PDF (333 Pages)</span>
+            </a>
+            <a href="assets/The_Life_Divine_Bilingual_Companion.epub" download class="btn-colophon btn-colophon-outline">
+              <svg class="colophon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Download EPUB Edition</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================================
+       2. AUDIOBOOK EXPERIENCE (The Contemplative Listening Room)
+       ========================================================================= -->
+  <main id="view-listen" class="page-view">
+    <div class="listening-room">
+      
+      <!-- CHAPTER INDEX LEDGER (Left) -->
+      <aside class="ledger-column">
+        
+        <div class="ledger-header">
+          <div class="ledger-title-row">
+            <h2 class="ledger-title">Audiobook Ledger</h2>
+            <span class="ledger-count">56 Chapters</span>
+          </div>
+
+          <!-- Clean Search Input -->
+          <div class="ledger-search-wrap">
+            <input 
+              type="text" 
+              id="audio-search" 
+              class="ledger-search-input" 
+              placeholder="Search chapters or concepts..." 
+              oninput="app.filterAudioChapters()"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Part filter tabs -->
+          <div class="ledger-filters">
+            <button class="l-filter active" onclick="app.filterBook('all', this)">All (56)</button>
+            <button class="l-filter" onclick="app.filterBook(1, this)">Book I (28)</button>
+            <button class="l-filter" onclick="app.filterBook(2, this)">Book II (28)</button>
+          </div>
+        </div>
+
+        <!-- Scrollable chapter ledger -->
+        <div class="ledger-scroll" id="audio-chapter-list">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+      </aside>
+
+      <!-- AUDIOPHILE DECK & READ-ALONG SANCTUM (Right) -->
+      <section class="sanctum-column">
+        
+        <!-- MASTER AUDIO DECK (Restrained, Precise, Bespoke Physical Instrument) -->
+        <div class="master-deck">
+          
+          <!-- Chapter Identifiers -->
+          <div class="deck-meta">
+            <div class="deck-breadcrumb" id="np-book">Book I — Omnipresent Reality and the Universe</div>
+            <h1 class="deck-title" id="np-title">Chapter I: The Human Aspiration</h1>
+            <div class="deck-title-kn" id="np-kn" lang="kn">ಮಾನವನ ಅಭೀಪ್ಸೆ</div>
+            <div class="deck-narrator">
+              <span class="narrator-badge">STUDIO VOICE</span>
+              <span class="narrator-name">Narrated in English by Christopher · Measured Philosophical Cadence</span>
+            </div>
+          </div>
+
+          <!-- Audio Controls Bar -->
+          <div class="deck-controls">
+            
+            <!-- Timeline Scrub Bar -->
+            <div class="timeline-container">
+              <span class="time-readout" id="time-current">0:00</span>
+              <div class="scrub-track" id="progress-wrap" onclick="app.seekAudio(event)" title="Seek position">
+                <div class="scrub-fill" id="progress-bar"></div>
+                <div class="scrub-handle" id="progress-handle"></div>
+              </div>
+              <span class="time-readout" id="time-duration">0:00</span>
+            </div>
+
+            <!-- Playback Transport Buttons (Clean SVGs, Zero Emojis) -->
+            <div class="transport-row">
+              
+              <div class="transport-group">
+                <button class="t-btn prev-btn" onclick="app.prevChapter()" title="Previous Chapter (Shift+Left)">
+                  <svg class="t-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="4" y="5" width="2.5" height="14" rx="0.5"></rect>
+                    <polygon points="20 5 9 12 20 19"></polygon>
+                  </svg>
+                </button>
+                <button class="t-btn skip-btn" onclick="app.skipSeconds(-15)" title="Rewind 15 Seconds (Left Arrow)">
+                  <svg class="t-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                    <text x="12" y="15.5" font-size="7.5" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">15</text>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Main Play/Pause Button -->
+              <button class="play-orb" id="btn-play-pause" onclick="app.togglePlay()" title="Play / Pause (Spacebar)">
+                <span id="play-icon" class="orb-glyph">
+                  <svg class="icon-svg icon-play" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="6 4 20 12 6 20"></polygon>
+                  </svg>
+                </span>
+              </button>
+
+              <div class="transport-group">
+                <button class="t-btn skip-btn" onclick="app.skipSeconds(15)" title="Fast Forward 15 Seconds (Right Arrow)">
+                  <svg class="t-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                    <text x="12" y="15.5" font-size="7.5" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">15</text>
+                  </svg>
+                </button>
+                <button class="t-btn next-btn" onclick="app.nextChapter()" title="Next Chapter (Shift+Right)">
+                  <svg class="t-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="4 5 15 12 4 19"></polygon>
+                    <rect x="17.5" y="5" width="2.5" height="14" rx="0.5"></rect>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Speed, Continuous Play, and Download -->
+              <div class="transport-utilities">
+                
+                <div class="utility-speed">
+                  <label for="speed-select" class="speed-label">Speed</label>
+                  <select id="speed-select" onchange="app.setSpeed(this.value)">
+                    <option value="0.75">0.75×</option>
+                    <option value="1.0" selected>1.0×</option>
+                    <option value="1.2">1.2×</option>
+                    <option value="1.5">1.5×</option>
+                  </select>
+                </div>
+
+                <label class="continuous-toggle" title="Automatically advance to the next chapter when complete">
+                  <input type="checkbox" id="auto-advance" checked />
+                  <span class="toggle-mark"></span>
+                  <span class="toggle-text">Continuous</span>
+                </label>
+
+                <a id="btn-download-audio" href="#" download class="deck-dl-link" title="Download chapter audio in MP3 format">
+                  <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>MP3</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- READ-ALONG TEXT PAPER -->
+        <article class="read-along-paper">
+          <div class="paper-header">
+            <div>
+              <span class="paper-kicker">READ-ALONG ESSENCE</span>
+              <span class="paper-hint">Follow the written synthesis concurrently with the voice</span>
+            </div>
+            <button class="paper-jump-kn" onclick="app.jumpToKannadaReader()">
+              <span>ಕನ್ನಡ ಅನುವಾದ ಓದಿ (Read Kannada Translation)</span>
+              <span class="jump-arrow">→</span>
+            </button>
+          </div>
+          
+          <div class="paper-body" id="read-along-content">
+            <!-- Populated dynamically -->
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- =========================================================================
+       3. DIGITAL COMPANION READER (The Physical Book Experience)
+       ========================================================================= -->
+  <main id="view-read" class="page-view">
+    <div class="reading-sanctuary">
+      
+      <!-- Minimalist Reading Toolbar -->
+      <nav class="reader-control-bar">
+        
+        <!-- Chapter Select -->
+        <div class="rcb-group">
+          <label for="reader-ch-select" class="rcb-label">Chapter</label>
+          <select id="reader-ch-select" onchange="app.loadReaderChapter(this.value)">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <!-- Layout Modes -->
+        <div class="rcb-group">
+          <div class="layout-toggle-pills">
+            <button class="lt-pill active" onclick="app.setReaderLayout('side-by-side', this)" title="English &amp; Kannada parallel columns">Side-by-Side</button>
+            <button class="lt-pill" onclick="app.setReaderLayout('alternating', this)" title="Alternating English then Kannada">Alternating</button>
+            <button class="lt-pill" onclick="app.setReaderLayout('en-only', this)" title="English synthesis only">English</button>
+            <button class="lt-pill" onclick="app.setReaderLayout('kn-only', this)" title="ಕನ್ನಡ ಅನುವಾದ ಮಾತ್ರ">ಕನ್ನಡ</button>
+          </div>
+        </div>
+
+        <!-- Reading Environment Preferences -->
+        <div class="rcb-group rcb-preferences">
+          
+          <!-- Theme Switcher -->
+          <button class="pref-btn theme-btn" onclick="app.cycleReaderTheme()" title="Switch Reading Palette">
+            <span class="palette-swatch"></span>
+            <span id="lbl-theme-name">Black</span>
+          </button>
+
+          <!-- Type Scale -->
+          <div class="type-scale-group">
+            <button class="pref-btn" onclick="app.adjustFontSize(-1)" title="Decrease font size">A−</button>
+            <button class="pref-btn" onclick="app.adjustFontSize(1)" title="Increase font size">A+</button>
+          </div>
+
+          <!-- Switch to Audio -->
+          <button class="listen-link-btn" onclick="app.jumpToAudioForCurrentChapter()" title="Switch to the spoken audio for this chapter">
+            <svg class="listen-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="12" x2="4" y2="12.01"></line>
+              <line x1="8" y1="8" x2="8" y2="16"></line>
+              <line x1="12" y1="4" x2="12" y2="20"></line>
+              <line x1="16" y1="7" x2="16" y2="17"></line>
+              <line x1="20" y1="11" x2="20" y2="13"></line>
+            </svg>
+            <span>Listen to Chapter</span>
+          </button>
+
+        </div>
+
+      </nav>
+
+      <!-- The Reading Stage (Rendered Book Text) -->
+      <div class="reading-stage" id="reader-stage">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Chapter Turn Navigation -->
+      <nav class="reader-pagination" aria-label="Chapter Pagination">
+        <button class="page-turn-btn" onclick="app.prevReaderChapter()">
+          <span class="pt-arrow">←</span>
+          <span class="pt-text">Previous Chapter</span>
+        </button>
+
+        <div class="page-indicator" id="reader-progress-indicator">
+          Chapter 1 of 56
+        </div>
+
+        <button class="page-turn-btn" onclick="app.nextReaderChapter()">
+          <span class="pt-text">Next Chapter</span>
+          <span class="pt-arrow">→</span>
+        </button>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- HIDDEN NATIVE AUDIO ELEMENT -->
+  <audio id="native-audio" preload="metadata"></audio>
+
+  <!-- DATA & APP LOGIC -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
